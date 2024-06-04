@@ -1,57 +1,34 @@
 import { Injectable, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Cliente } from './models/Cliente';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
   clientes: Array<Cliente> = []
+  urlApi = "http://localhost:8080/";
 
-  constructor() {
-    this.carregarClientesDoLocalStorage();
-  }
-
-  private carregarClientesDoLocalStorage() {
-    const clientesArmazenados = localStorage.getItem('clientes');
-    if (clientesArmazenados) {
-      this.clientes = JSON.parse(clientesArmazenados);
-    }
-  }
+  constructor(private http: HttpClient) { }
 
   public inserir(cliente: Cliente) {
-    cliente.id = parseInt(Math.random().toString().split('.')[1])
-    this.clientes.push(cliente)
-
-    const strClientes = JSON.stringify(this.clientes)
-    localStorage.setItem('clientes', strClientes)
+    return this.http.post<boolean>(this.urlApi + 'cliente', cliente);
   }
 
   public alterar(id: number, cliente: Cliente) {
-    var index = this.clientes.findIndex((t=>t.id == id))
-    this.clientes[index] = cliente
-
-    console.log(this.clientes)
-
-    const strClientes = JSON.stringify(this.clientes)
-    localStorage.setItem('clientes', strClientes)
+    return this.http.put<boolean>(this.urlApi + 'cliente/' + id, cliente);
   }
 
   public deletar(id: number) {
-    var index = this.clientes.findIndex((t=>t.id == id))
-    this.clientes.splice(index, 1)
-
-    const strClientes = JSON.stringify(this.clientes)
-    localStorage.setItem('clientes', strClientes)
+    return this.http.delete<boolean>(this.urlApi + 'cliente/' + id);
   }
 
-  public obterPorId(id: number): Cliente {
-    var index = this.clientes.findIndex((cliente) => cliente.id === id)
-    var cliente = this.clientes[index]
-
-    return cliente
+  public obterPorId(id: number): Observable<Cliente> {
+    return this.http.get<Cliente>(this.urlApi + 'cliente/' + id);
   }
 
-  public obterTodos(): Cliente[] {
-    return this.clientes
+  public obterTodos(): Observable<Cliente> {
+    return this.http.get<Cliente>(this.urlApi + 'clientes');
   }
 }

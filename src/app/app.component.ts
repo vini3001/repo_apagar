@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'biblioteca_reges';
+  title = 'academia_do_gui';
 }

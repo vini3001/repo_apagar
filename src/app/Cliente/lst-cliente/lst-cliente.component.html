@@ -1,6 +1,6 @@
 <body>
 <head>
-  <title>Listagem de Clientes</title>
+  <title>Listagem de Registros</title>
   <style>
     table {
       width: 100%;
@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<button style="margin: 10px;" type="button" (click)="onClick()" class="btn btn-success">Criar usuário</button>
+<button style="margin: 10px;" type="button" (click)="onClick()" class="btn btn-success">Cadastrar usuário</button>
 
 <h2>Listagem de Clientes</h2>
 
@@ -32,30 +32,18 @@
         <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>CPF</th>
-            <th>RG</th>
-            <th>Rua</th>
-            <th>Numero</th>
-            <th>Cidade</th>
-            <th>CEP</th>
-            <th>Estado</th>
-            <th>Livro</th>
-            <th></th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
             <th></th>
           </tr>
           <tr>
             <td>{{cliente.id}}</td>
             <td>{{cliente.nome}}</td>
-            <td>{{cliente.cpf}}</td>
-            <td>{{cliente.rg}}</td>
-            <td>{{cliente.rua}}</td>
-            <td>{{cliente.numero}}</td>
-            <td>{{cliente.cidade}}</td>
-            <td>{{cliente.cep}}</td>
-            <td>{{cliente.estado}}</td>
-            <td>{{cliente.livro}}</td>
-            <td><button class="btn btn-warning" (click)="openEdit(cliente.id)">Editar</button></td>
-            <td><button class="btn btn-danger" (click)="deleteClient(cliente.id)">Deletar</button></td>
+            <td>{{cliente.email}}</td>
+            <td>{{cliente.telefone}}</td>
+            <td>{{cliente.endereco}}</td>
+            <td><button class="btn btn-secondary" (click)="openEdit(cliente.id)">Editar</button></td>
           </tr>
     </li>
   </ul>

@@ -27,10 +27,6 @@ export class LstClienteComponent implements OnInit {
     this.router.navigate([`/update-cliente/`, id  ])
   }
 
-  deleteClient(id: number | undefined) {
-    this.service.deletar(id as number)
-  }
-
   obterClientes() {
     this.clientes = this.service.obterTodos()
   }

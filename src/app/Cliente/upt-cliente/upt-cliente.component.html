@@ -1,83 +1,29 @@
 <div style="display: flex; flex-direction: column; height: 80vh; justify-content: center; align-items: center;">
-    <h2>Formulário de atualização</h2>
-    <form (ngSubmit)="submitForm()" style="margin-top: 30px; width: 50%; background-color: #d3d3d3; padding: 10px; border-radius: 10px;" class="gap-3">
-        <div class="row d-flex">
-          <div class="form-group flex-fill col-md-4">
+  <h2>Atualização de registro</h2>
+  <form (ngSubmit)="submitForm()" style="margin-top: 30px; width: 50%; background-color: white; border-width: 3px; padding: 10px; border-radius: 10px;" class="gap-3">
+      <div class="row d-flex">
+        <div name="form-content" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <div class="flex col-md-4">
             <label for="inputName">Nome</label>
-            <input type="email" name="nome" [(ngModel)]="this.cliente.nome" class="form-control" id="inputName" placeholder="Digite o seu nome...">
+            <input type="text" name="nome" [(ngModel)]="this.cliente.nome" class="form-control" id="inputName" placeholder="Digite o seu nome...">
           </div>
-          <div class="form-group flex-fill col-md-4">
-            <label for="inputPassword4">Senha</label>
-            <input type="password" name="senha" [(ngModel)]="this.cliente.senha" class="form-control" id="inputPassword4" placeholder="Digite a sua senha...">
+          <div class="flex col-md-4">
+            <label for="inputAddress">Endereco</label>
+            <input width="50%" type="text" name="endereco" [(ngModel)]="this.cliente.endereco" class="form-control" id="inputAddress" placeholder="Digite o seu endereço...">
           </div>
-        </div>
-        <div class="row d-flex justify-content-center">
-            <div class="form-group flex-fill col-md-3">
-              <label for="inputStreet">Rua</label>
-              <input type="text" name="rua" class="form-control" [(ngModel)]="this.cliente.rua" id="inputStreet" placeholder="(Rua Alburquerque Lins)">
-            </div>
-            <div class="form-group flex-fill col-md-1">
-              <label for="inputNumber">Nº</label>
-              <input type="text" name="Nº End" class="form-control" [(ngModel)]="this.cliente.numero" id="inputNumber" placeholder="(123)">
-            </div>
-            <div class="form-group flex-fill col-md-2">
-              <label for="inputCity">Cidade</label>
-              <input type="text" name="Cidade" class="form-control" [(ngModel)]="this.cliente.cidade" id="inputCity" placeholder="(São Paulo)">
-            </div>
-            <div class="form-group flex-fill col-md-2">
-              <label for="inputCep">CEP</label>
-              <input type="text" name="cep" class="form-control" [(ngModel)]="this.cliente.cep" id="inputCep" placeholder="(14090054)">
-            </div>
-        </div>
-          <div class="row d-flex justify-content-start">
-            <div class="form-group col-md-5">
-              <label for="inputState">Estado</label>
-              <select name="estado" [(ngModel)]="this.cliente.estado" id="inputState" class="form-control">
-                <option selected>Selecione o seu estado...</option>
-                <option>Acre</option>
-                <option>Alagoas</option>
-                <option>Amapá</option>
-                <option>Amazonas</option>
-                <option>Bahia</option>
-                <option>Ceará</option>
-                <option>Distrito Federal</option>
-                <option>Espírito Santo</option>
-                <option>Goiás</option>
-                <option>Maranhão</option>
-                <option>Mato Grosso</option>
-                <option>Mato Grosso do Sul</option>
-                <option>Minas Gerais</option>
-                <option>Pará</option>
-                <option>Paraíba</option>
-                <option>Paraná</option>
-                <option>Pernambuco</option>
-                <option>Piauí</option>
-                <option>Rio de Janeiro</option>
-                <option>Rio Grande do Norte</option>
-                <option>Rio Grande do Sul</option>
-                <option>Rondônia</option>
-                <option>Roraima</option>
-                <option>Santa Catarina</option>
-                <option>São Paulo</option>
-                <option>Sergipe</option>
-                <option>Tocantins</option>
-              </select>
-            </div>
-            <div class="form-group col-md-3">
-              <label for="inputCpf">CPF</label>
-              <input type="text" name="cpf" [(ngModel)]="this.cliente.cpf" class="form-control" id="inputCpf" placeholder="(473.345.238-67)">
-            </div>
-            <div class="form-group col-md-3">
-              <label for="inputRg">RG</label>
-              <input type="text" name="rg" [(ngModel)]="this.cliente.rg" class="form-control" id="inputRg" placeholder="(47.345.238-6)">
-            </div>
-            <div class="form-group col-md-3">
-              <label for="inputLivro">Livro</label>
-              <input type="text" name="livro" [(ngModel)]="this.cliente.livro" class="form-control" id="inputLivro">
-            </div>
+          <div class="flex col-md-4">
+            <label for="inputPhone">Telefone</label>
+            <input type="text" name="telefone" class="form-control" [(ngModel)]="this.cliente.telefone" id="inputPhone" placeholder="Digite o seu telefone...">
           </div>
-        <div style="margin-left: 1px;" class="row d-flex">
-          <button type="submit" style="width: 10%;" class="btn btn-primary">Enviar</button>
-        </div>      
-    </form>
-  </div>
+          <div class="flex col-md-4">
+            <label for="inputEmail">Email</label>
+            <input type="email" name="email" class="form-control" [(ngModel)]="this.cliente.email" id="inputEmail" placeholder="teste@gmail.com">
+          </div>
+          <div style="display: flex; flex-direction: row; margin-left: 1px; margin-top: 5px; gap: 10px;" class="form-group">
+            <button type="submit" style="width: 100%;" class="btn btn-primary">Enviar</button>
+            <button class="btn btn-danger" (click)="deleteClient(cliente.id)">Deletar</button>
+          </div> 
+        </div>  
+      </div>   
+  </form>
+</div>    

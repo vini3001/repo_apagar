@@ -1,5 +1,4 @@
 import { Pessoa } from "./Pessoa";
 
-export class Cliente { 
-    livro?: string
+export class Cliente extends Pessoa { 
 }

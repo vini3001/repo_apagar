@@ -17,12 +17,14 @@ export class UptClienteComponent implements OnInit {
     const client = this.service.obterPorId(id)
     
     this.cliente = JSON.parse(JSON.stringify(client));
-
-    console.log(this.cliente.cep)
   }
 
   submitForm() {
     this.service.alterar(this.cliente.id as number, this.cliente)
     this.router.navigate(['/'])
+  }
+
+  deleteClient(id: number | undefined) {
+    this.service.deletar(id as number)
   }
 }
