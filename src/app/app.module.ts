@@ -7,6 +7,7 @@ import { FrmClienteComponent } from './Cliente/frm-cliente/frm-cliente.component
 import { LstClienteComponent } from './Cliente/lst-cliente/lst-cliente.component';
 import { FormsModule } from '@angular/forms';
 import { UptClienteComponent } from './Cliente/upt-cliente/upt-cliente.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UptClienteComponent } from './Cliente/upt-cliente/upt-cliente.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
