@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../../cliente.service';
 import { Cliente } from '../../models/Cliente';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-lst-cliente',
@@ -23,15 +24,23 @@ export class LstClienteComponent implements OnInit {
   }
 
   openEdit(id: number | undefined) {
-    console.log(id)
+
     this.router.navigate([`/update-cliente/`, id  ])
   }
 
   obterClientes() {
-    this.clientes = this.service.obterTodos()
+    this.service.obterTodos().subscribe({
+      next: (dados) => {
+        this.clientes = dados
+      }
+    })
   }
 
   obterCliente(id: number) {
-    this.clienteFrm = this.service.obterPorId(id)
+    this.service.obterPorId(id).subscribe({
+      next: (dados) => {
+        this.clienteFrm = dados
+      }
+    })
   }
 }

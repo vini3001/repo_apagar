@@ -16,15 +16,27 @@ export class UptClienteComponent implements OnInit {
     const id = parseFloat(this.route.snapshot.paramMap.get('id') as string);
     const client = this.service.obterPorId(id)
     
-    this.cliente = JSON.parse(JSON.stringify(client));
+    client.subscribe({
+      next: (dados) => {
+        this.cliente = dados
+      }
+    });
   }
 
   submitForm() {
-    this.service.alterar(this.cliente.id as number, this.cliente)
+    this.service.alterar(this.cliente.id as number, this.cliente).subscribe({
+      next: () => {
+        alert('usuário alterado com sucesso')
+      }
+    })
     this.router.navigate(['/'])
   }
 
   deleteClient(id: number | undefined) {
-    this.service.deletar(id as number)
+    this.service.deletar(id as number).subscribe({
+      next: () => {
+        alert('usuário deletado com sucesso')
+      }
+    })
   }
 }

@@ -28,7 +28,7 @@ export class ClienteService {
     return this.http.get<Cliente>(this.urlApi + 'cliente/' + id);
   }
 
-  public obterTodos(): Observable<Cliente> {
-    return this.http.get<Cliente>(this.urlApi + 'clientes');
+  public obterTodos(): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(this.urlApi + 'clientes');
   }
 }

@@ -14,7 +14,11 @@ export class FrmClienteComponent {
     constructor(private service: ClienteService, private router: Router) {}
 
     submitForm() {
-      this.service.inserir(this.cliente)
+      this.service.inserir(this.cliente).subscribe({
+        next: () => {
+          alert('usuário criado com sucesso')
+        }
+      })
       this.router.navigate(['/'])
     }
 }
